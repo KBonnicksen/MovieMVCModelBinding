@@ -22,13 +22,13 @@ namespace MovieMVCModelBinding.Models
         /// Full title of the movie
         /// </summary>
         [Required(ErrorMessage = "Title is required")]
-        [StringLength(150, ErrorMessage = "Title cannot be more than 150 characters")]
+        [StringLength(80, ErrorMessage = "Title cannot be more than 150 characters")]
         public string Title { get; set; }
 
         /// <summary>
         /// Full legal name of the film's director
         /// </summary>
-        [StringLength(150, ErrorMessage = "Director's name cannot be more than 150 characters")]
+        [StringLength(60, ErrorMessage = "Director's name cannot be more than 150 characters")]
         [Required(ErrorMessage = "Director is required")]
         public string Director { get; set; }
 
@@ -36,6 +36,7 @@ namespace MovieMVCModelBinding.Models
         /// The four digit year that the film was released
         /// </summary>
         [Display(Name = "Release Year")]
+        [CustomMovieYear]
         public int YearReleased { get; set; }
 
         /// <summary>
@@ -50,6 +51,6 @@ namespace MovieMVCModelBinding.Models
         /// </summary>
         [Display(Name = "IMDB Rating")]
         [Range(.01, 10)]
-        public int IMDBRating { get; set; }
+        public double IMDBRating { get; set; }
     }
 }

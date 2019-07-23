@@ -18,14 +18,15 @@ namespace MovieMVCModelBinding.Controllers
         [HttpPost]
         public IActionResult AddMovie(IFormCollection data)
         {
-            Movie film = new Movie()
-            {
-                Title = data["title"],
-                Director = data["director"],
-                YearReleased = Convert.ToInt32(data["year"]),
-                Genre = data["genre"],
-                IMDBRating = Convert.ToInt32(data["rating"])
-            };
+            //Validation code here
+                Movie film = new Movie()
+                {
+                    Title = data["title"],
+                    Director = data["director"],
+                    YearReleased = Convert.ToInt32(data["year"]),
+                    Genre = data["genre"],
+                    IMDBRating = Convert.ToInt32(data["rating"])
+                };
             return View();
         }
 
