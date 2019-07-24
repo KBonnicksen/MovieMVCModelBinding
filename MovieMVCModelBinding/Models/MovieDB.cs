@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace MovieMVCModelBinding.Models
 {
+    /// <summary>
+    /// Class holding database functionality methods 
+    /// Ex. Inserts, updates, deletes
+    /// </summary>
     class MovieDB
     {
         /// <summary>
