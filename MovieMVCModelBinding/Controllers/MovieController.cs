@@ -19,14 +19,24 @@ namespace MovieMVCModelBinding.Controllers
         public IActionResult AddMovie(IFormCollection data)
         {
             //Validation code here
+            try
+            {
                 Movie film = new Movie()
                 {
                     Title = data["title"],
                     Director = data["director"],
                     YearReleased = Convert.ToInt32(data["year"]),
                     Genre = data["genre"],
-                    IMDBRating = Convert.ToInt32(data["rating"])
+                    IMDBRating = Convert.ToDouble(data["rating"])
                 };
+
+                MovieDB.Add(film);
+                ViewData["Success"] = "Movie has been added!";
+            }
+            catch (Exception)
+            {
+                ViewData["Error"] = "Whoops, looks like something went wrong! :(";
+            }
             return View();
         }
 
@@ -35,16 +45,15 @@ namespace MovieMVCModelBinding.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult AddMovieMB(Movie film)
         {
             if (ModelState.IsValid)
             {
-                //Add to database
                 MovieDB.Add(film);
 
-                //Display thank-you/success message
-                ViewData["Success"] = "Student was successfully registered!";
+                ViewData["Success"] = "Movie has been added!";
             }
             return View();
         }

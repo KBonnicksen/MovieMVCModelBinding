@@ -21,36 +21,35 @@ namespace MovieMVCModelBinding.Models
         /// <summary>
         /// Full title of the movie
         /// </summary>
-        [Required(ErrorMessage = "Title is required")]
-        [StringLength(80, ErrorMessage = "Title cannot be more than 150 characters")]
+        [Required(ErrorMessage = "* Required")]
+        [StringLength(80, ErrorMessage = "* Title cannot be more than 150 characters")]
         public string Title { get; set; }
 
         /// <summary>
         /// Full legal name of the film's director
         /// </summary>
-        [StringLength(60, ErrorMessage = "Director's name cannot be more than 150 characters")]
-        [Required(ErrorMessage = "Director is required")]
+        [StringLength(60, ErrorMessage = "* Director's name cannot be more than 150 characters")]
+        [Required(ErrorMessage = "* Required")]
         public string Director { get; set; }
 
         /// <summary>
         /// The four digit year that the film was released
         /// </summary>
         [Display(Name = "Release Year")]
-        [CustomMovieYear]
-        public int YearReleased { get; set; }
+        public int? YearReleased { get; set; }
 
         /// <summary>
         /// General style/motif of the film 
         /// ex. Horror, Western, Romance
         /// </summary>
-        [StringLength(30, ErrorMessage = "Genre cannot be more than 30 characters")]
+        [StringLength(30, ErrorMessage = "* Genre cannot be more than 30 characters")]
         public string Genre { get; set; }
 
         /// <summary>
         /// The rating of the film from IMDB's official website
         /// </summary>
         [Display(Name = "IMDB Rating")]
-        [Range(.01, 10)]
-        public double IMDBRating { get; set; }
+        [Range(.01, 10, ErrorMessage = "* Rating must be between .01 and 10")]
+        public double? IMDBRating { get; set; }
     }
 }
